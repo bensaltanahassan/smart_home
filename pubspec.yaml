@@ -11,15 +11,21 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_auth: ^4.19.6
   firebase_core: ^2.25.3
+  firebase_database: ^10.5.7
   firebase_messaging: ^14.7.14
   firebase_storage: ^11.7.6
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.4.0
+  flutter_offline: ^3.0.1
   flutter_screenutil: ^5.9.1
+  flutter_svg: ^2.0.10+1
   get: ^4.6.6
   intl: ^0.19.0
   introduction_screen: ^3.1.12
   lottie: ^3.0.0
+  pinput: ^4.0.0
   shared_preferences: ^2.2.2
 
 dev_dependencies:

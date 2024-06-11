@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "618039656283",
+    "firebase_url": "https://iot-project-ad019-default-rtdb.firebaseio.com",
+    "project_id": "iot-project-ad019",
+    "storage_bucket": "iot-project-ad019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618039656283:android:911427fca0bf886a17e47e",
+        "android_client_info": {
+          "package_name": "com.bensaltanadev.smarthome.smart_home"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjfpIws9jpopXPTWk-JKsXFP4nCEy4Tqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

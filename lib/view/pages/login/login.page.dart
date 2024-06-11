@@ -10,7 +10,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(LoginController());
+    final controller = Get.put(LoginController());
     return Scaffold(
       bottomNavigationBar: GetBuilder<LoginController>(
           id: "loginButton",
@@ -53,95 +53,102 @@ class LoginPage extends StatelessWidget {
                     ),
             );
           }),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20).r,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Image.asset(
-                AppImageAsset.logo,
-                width: 200.w,
-                height: 200.h,
-              ),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              "Welcome to Smart Home",
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                fontSize: 24.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(height: 20.h),
-            Text(
-              "Email",
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                fontSize: 18.sp,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 6.h),
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                hintText: "Enter your email",
-                hintStyle: const TextStyle(color: Colors.white),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10).r,
-                  borderSide: const BorderSide(color: Colors.white),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding:
+              const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 60).r,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Image.asset(
+                  AppImageAsset.logoLight,
+                  width: 250.w,
+                  height: 250.h,
                 ),
               ),
-            ),
-            SizedBox(height: 20.h),
-            Text(
-              "Password",
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                fontSize: 18.sp,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+              Text(
+                "Welcome to ProHome",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
-            ),
-            SizedBox(height: 6.h),
-            GetBuilder<LoginController>(
-                id: "showPassword",
-                builder: (controller) {
-                  return TextFormField(
-                    obscureText: Get.find<LoginController>().showPassword,
-                    cursorColor: Colors.white,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          controller.showPasswordToggle();
-                        },
-                        icon: AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 500),
-                          child: controller.showPassword == true
-                              ? const Icon(
-                                  Icons.visibility,
-                                  color: Colors.white,
-                                )
-                              : const Icon(Icons.visibility_off,
-                                  color: Colors.white),
+              SizedBox(height: 20.h),
+              Text(
+                "Email",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 6.h),
+              TextFormField(
+                cursorColor: Colors.white,
+                style: const TextStyle(color: Colors.white),
+                controller: controller.emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: "Enter your email",
+                  hintStyle: const TextStyle(color: Colors.white),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10).r,
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.h),
+              Text(
+                "Password",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 6.h),
+              GetBuilder<LoginController>(
+                  id: "showPassword",
+                  builder: (controller) {
+                    return TextFormField(
+                      controller: controller.passwordController,
+                      obscureText: !Get.find<LoginController>().showPassword,
+                      cursorColor: Colors.white,
+                      style: const TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            controller.showPasswordToggle();
+                          },
+                          icon: AnimatedSwitcher(
+                            duration: const Duration(milliseconds: 500),
+                            child: controller.showPassword == true
+                                ? const Icon(
+                                    Icons.visibility,
+                                    color: Colors.white,
+                                  )
+                                : const Icon(Icons.visibility_off,
+                                    color: Colors.white),
+                          ),
+                        ),
+                        hintText: "Enter your password",
+                        hintStyle: const TextStyle(color: Colors.white),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10).r,
+                          borderSide: const BorderSide(color: Colors.white),
                         ),
                       ),
-                      hintText: "Enter your password",
-                      hintStyle: const TextStyle(color: Colors.white),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10).r,
-                        borderSide: const BorderSide(color: Colors.white),
-                      ),
-                    ),
-                  );
-                }),
-          ],
+                    );
+                  }),
+            ],
+          ),
         ),
       ),
     );
